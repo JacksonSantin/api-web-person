@@ -1,0 +1,207 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API de manipulação de pessoa",
+    "description": "Essa API tem como objetivo realizar a manutenção simples de pessoa",
+    "termsOfService": "http://localhost:3000/terms",
+    "contact": {
+      "email": "jackdhanyelsn@gmail.com"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/",
+      "description": "API de teste"
+    }
+  ],
+  "paths": {
+    "/person": {
+      "post": {
+        "summary": "Cadastro de pessoa",
+        "description": "Essa rota será responsável por cadastrar uma nova pessoa.",
+        "tags": [
+          "Person"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Person"
+              },
+              "examples": {
+                "person": {
+                  "value": {
+                    "name": "João",
+                    "salary": 5000,
+                    "approved": false
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "422": {
+            "description": "Nome é obrigatório!"
+          },
+          "201": {
+            "description": "Pessoa inserida no sitema com sucesso!",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Person"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Person"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/person/{name}": {
+      "get": {
+        "summary": "Busca uma pessoa pelo nome",
+        "description": "Busca uma pessoa pelo nome",
+        "tags": [
+          "Person"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "params",
+            "description": "Nome da pessoa para busca",
+            "required": true
+          }
+        ],
+        "response": {
+          "422": {
+            "description": "O usuário não foi encontrado!"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Person"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/person/{id}": {
+      "put": {
+        "summary": "Alterar pessoa pelo ID",
+        "description": "Alterar pessoa pelo ID",
+        "tags": [
+          "Person"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "params",
+            "description": "ID da pessoa para alteração",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Person"
+              },
+              "examples": {
+                "person": {
+                  "value": {
+                    "name": "João Alterado",
+                    "salary": 12000,
+                    "approved": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "response": {
+          "422": {
+            "description": "O usuário não foi encontrado!"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Person"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deleta uma pessoa pelo ID",
+        "description": "Deleta uma pessoa pelo ID",
+        "tags": [
+          "Person"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "params",
+            "description": "ID da pessoa para deletar",
+            "required": true
+          }
+        ],
+        "response": {
+          "422": {
+            "description": "O usuário não foi encontrado!"
+          },
+          "200": {
+            "description": "Usuário removido com sucesso!",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Person"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Person": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "salary": {
+            "type": "number"
+          },
+          "approved": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  }
+}
