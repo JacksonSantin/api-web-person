@@ -12,13 +12,18 @@ router.post('/', async (req, res) => {
     return
   }
 
-  const person = {
-    name,
-    salary,
-    approved
-  }
-
   try {
+
+    const lastPerson = await Person.findOne().sort({ id: -1 })
+    const nextId = lastPerson ? lastPerson.id + 1 : 1
+
+    const person = {
+      id: nextId,
+      name,
+      salary,
+      approved
+    }
+
     // create - criando dados
     await Person.create(person)
 
@@ -42,14 +47,14 @@ router.get('/', async (req, res) => {
   }
 })
 
-// READ - NAME
-router.get('/:name', async (req, res) => {
+// READ - ID
+router.get('/:id', async (req, res) => {
   // extrair dado da requisicao
-  const name = req.params.name
+  const id = req.params.id
 
   try {
 
-    const person = await Person.findOne({ name: name })
+    const person = await Person.findOne({ id: id })
 
     if (!person) {
       res.status(422).json({ message: "User not found!" })
@@ -66,11 +71,10 @@ router.get('/:name', async (req, res) => {
 // UPDATE - PUT(precisa passar completo) ou PATCH(passa so o que vai alterar)
 router.put('/:id', async (req, res) => {
 
-  const id = req.params.id
-
-  const { name, salary, approved } = req.body
+  const { id, name, salary, approved } = req.body
 
   const person = {
+    id,
     name,
     salary,
     approved
@@ -78,7 +82,7 @@ router.put('/:id', async (req, res) => {
 
   try {
 
-    const updatedPerson = await Person.updateOne({ _id: id }, person)
+    const updatedPerson = await Person.findOneAndUpdate({ id: id }, person)
 
     if (updatedPerson.matchedCount === 0) {
       res.status(422).json({ message: "User not found!" })
@@ -97,7 +101,7 @@ router.delete('/:id', async (req, res) => {
 
   const id = req.params.id
 
-  const person = await Person.findOne({ _id: id })
+  const person = await Person.findOne({ id: id })
 
   if (!person) {
     res.status(422).json({ message: "User not found!" })
@@ -106,7 +110,7 @@ router.delete('/:id', async (req, res) => {
 
   try {
 
-    await Person.deleteOne({ _id: id })
+    await Person.deleteOne({ id: id })
 
     res.status(200).json({ message: "Success!" })
 
