@@ -2,8 +2,6 @@
 	API RESTful para cadatro de pessoa e consumo da mesma em aplicação VUE. 
 </h1>
 
----
-
 <p align="center">
   <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/JacksonSantin/api-web-person?color=%238257E5">
 
