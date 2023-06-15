@@ -32,9 +32,9 @@
               "examples": {
                 "person": {
                   "value": {
-                    "name": "João",
-                    "salary": 5000,
-                    "approved": false
+                    "name": "Nome Teste",
+                    "salary": 8000,
+                    "approved": true
                   }
                 }
               }
@@ -55,39 +55,6 @@
                 }
               }
             }
-          },
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "$ref": "#/components/schemas/Person"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/person/{name}": {
-      "get": {
-        "summary": "Busca uma pessoa pelo nome",
-        "description": "Busca uma pessoa pelo nome",
-        "tags": [
-          "Person"
-        ],
-        "parameters": [
-          {
-            "name": "name",
-            "in": "params",
-            "description": "Nome da pessoa para busca",
-            "required": true
-          }
-        ],
-        "response": {
-          "422": {
-            "description": "O usuário não foi encontrado!"
           },
           "200": {
             "description": "OK",
@@ -127,15 +94,49 @@
               "examples": {
                 "person": {
                   "value": {
-                    "name": "João Alterado",
-                    "salary": 12000,
-                    "approved": true
+                    "_id": "123456",
+                    "id": 1,
+                    "name": "Nome Teste",
+                    "salary": 8000,
+                    "approved": true,
+                    "__v": 0
                   }
                 }
               }
             }
           }
         },
+        "response": {
+          "422": {
+            "description": "O usuário não foi encontrado!"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Person"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Busca uma pessoa pelo id",
+        "description": "Busca uma pessoa pelo id",
+        "tags": [
+          "Person"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "params",
+            "description": "Id da pessoa para busca",
+            "required": true
+          }
+        ],
         "response": {
           "422": {
             "description": "O usuário não foi encontrado!"
@@ -162,7 +163,7 @@
         "parameters": [
           {
             "name": "id",
-            "in": "params",
+            "in": "query",
             "description": "ID da pessoa para deletar",
             "required": true
           }
@@ -191,6 +192,9 @@
       "Person": {
         "type": "object",
         "properties": {
+          "id": {
+            "type": "number"
+          },
           "name": {
             "type": "string"
           },
