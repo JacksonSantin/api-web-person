@@ -113,7 +113,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - **[nodemon](https://nodemon.io/)**
 - **[dotenv](https://www.dotenv.org/)**
 
-> Veja o arquivo [package.json](https://github.com/JacksonSantin/happy_NLW3/blob/master/backend/package.json)
+> Veja o arquivo [package.json](https://github.com/JacksonSantin/api-web-person/blob/main/server/package.json)
 
 #### **Utilitários**
 
