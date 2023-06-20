@@ -101,7 +101,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 - **[Axios](https://github.com/axios/axios)**
 
-> Veja o arquivo [package.json](https://github.com/JacksonSantin/api-web-person/blob/main/web/web-application/package.json)
+> Veja o arquivo [package.json](https://github.com/JacksonSantin/api-web-person/blob/main/web/package.json)
 
 #### **Backend** ([NodeJS](https://nodejs.org/en/) + [Javascript](https://www.javascript.com/))
 
