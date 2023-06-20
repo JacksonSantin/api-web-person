@@ -115,16 +115,6 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 > Veja o arquivo [package.json](https://github.com/JacksonSantin/happy_NLW3/blob/master/backend/package.json)
 
-#### **Mobile** ([React Native](http://www.reactnative.com/) + [TypeScript](https://www.typescriptlang.org/))
-
-- **[Expo](https://expo.io/)**
-- **[Expo Google Fonts](https://github.com/expo/google-fonts)**
-- **[ImagePicker](https://docs.expo.io/versions/latest/sdk/imagepicker/)**
-- **[React Navigation](https://reactnavigation.org/)**
-- **[Axios](https://github.com/axios/axios)**
-
-> Veja o arquivo [package.json](https://github.com/JacksonSantin/api-web-person/blob/main/server/package.json)
-
 #### **Utilitários**
 
 - Editor: **[Visual Studio Code](https://code.visualstudio.com/)**
